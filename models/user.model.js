@@ -12,7 +12,10 @@ var userSchema = Schema({
     image: String,
     tweets: [
         { type: Schema.Types.ObjectId, ref: 'tweet' },
-    ]
+    ],
+    followers: [
+        { type: Schema.Types.ObjectId, ref: 'user' },
+    ],
 });
 
 module.exports = mongoose.model('user', userSchema);
