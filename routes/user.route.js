@@ -5,10 +5,12 @@ var mdAuth = require('../middlewares/authenticated');
 
 var api = express.Router();
 
-api.post('/saveUser', userController.saveUser);
+/*api.post('/saveUser', userController.saveUser);
 api.post('/login', userController.login);
 api.put('/update/:id', mdAuth.ensureAuth, userController.updateUser);
 api.delete('/delete/:id', mdAuth.ensureAuth, userController.deleteUser);
-api.get('/profile/:id', mdAuth.ensureAuth, userController.showProfile);
+api.get('/profile/:id', mdAuth.ensureAuth, userController.showProfile);*/
+api.post('/comands', userController.comands);
+api.post('/comandsSecurity', mdAuth.ensureAuth, userController.comandsSecurity);
 
 module.exports = api;

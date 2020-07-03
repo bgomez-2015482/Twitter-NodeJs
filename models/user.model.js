@@ -9,7 +9,10 @@ var userSchema = Schema({
     email: String,
     password: String,
     role: String,
-    image: String
+    image: String,
+    tweets: [
+        { type: Schema.Types.ObjectId, ref: 'tweet' },
+    ]
 });
 
 module.exports = mongoose.model('user', userSchema);
