@@ -351,7 +351,7 @@
 		},
 		{
 			"id": "9df8be9b-f71a-7c1c-e6da-5885b5e1f15c",
-			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZlZTVkYjdiNTA3MDBiYjgzM2QwOGUiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM3NjMzMzAsImV4cCI6MTU5MzgxNzMzMH0.u1sEVjY-9pYTzsYuvf2yEderv1XQhjNB97aYGuDnUSg\"\n",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZmYzJjYjNmZGUzMTE4ZmMwYzI0MzIiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM4MTk5MDcsImV4cCI6MTU5Mzg3MzkwN30.Gi6VeU9fJAghvVtiYhntdT7kchLl279ylosgBCMSFBg\"\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -361,7 +361,7 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZlZTVkYjdiNTA3MDBiYjgzM2QwOGUiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM3NjMzMzAsImV4cCI6MTU5MzgxNzMzMH0.u1sEVjY-9pYTzsYuvf2yEderv1XQhjNB97aYGuDnUSg\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZmYzJjYjNmZGUzMTE4ZmMwYzI0MzIiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM4MTk5MDcsImV4cCI6MTU5Mzg3MzkwN30.Gi6VeU9fJAghvVtiYhntdT7kchLl279ylosgBCMSFBg\"",
 					"description": "tokenMaster",
 					"enabled": true
 				}
@@ -383,7 +383,7 @@
 				},
 				{
 					"key": "username",
-					"value": "Alexgg",
+					"value": "Bgomez",
 					"description": "",
 					"type": "text",
 					"enabled": true
@@ -408,7 +408,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1593803874168,
+			"time": 1593820586906,
 			"name": "LOGIN",
 			"description": "",
 			"collectionId": "40d7f81c-fb38-f1de-6655-bc36ed751e2f",
@@ -468,7 +468,7 @@
 		},
 		{
 			"id": "e393b252-c6ca-291c-d1c6-283f8892f61b",
-			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZlZTVkYjdiNTA3MDBiYjgzM2QwOGUiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM3NjMzMzAsImV4cCI6MTU5MzgxNzMzMH0.u1sEVjY-9pYTzsYuvf2yEderv1XQhjNB97aYGuDnUSg\"\n",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZmYzJjYjNmZGUzMTE4ZmMwYzI0MzIiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM4MTk5MDcsImV4cCI6MTU5Mzg3MzkwN30.Gi6VeU9fJAghvVtiYhntdT7kchLl279ylosgBCMSFBg\"\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -478,7 +478,7 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZlZTVkYjdiNTA3MDBiYjgzM2QwOGUiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM3NjMzMzAsImV4cCI6MTU5MzgxNzMzMH0.u1sEVjY-9pYTzsYuvf2yEderv1XQhjNB97aYGuDnUSg\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZmYzJjYjNmZGUzMTE4ZmMwYzI0MzIiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM4MTk5MDcsImV4cCI6MTU5Mzg3MzkwN30.Gi6VeU9fJAghvVtiYhntdT7kchLl279ylosgBCMSFBg\"",
 					"description": "tokenMaster",
 					"enabled": true
 				}
@@ -532,7 +532,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1593803085114,
+			"time": 1593820588508,
 			"name": "REGISTER",
 			"description": "",
 			"collectionId": "40d7f81c-fb38-f1de-6655-bc36ed751e2f",

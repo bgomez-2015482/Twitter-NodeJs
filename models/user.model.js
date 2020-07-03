@@ -8,7 +8,6 @@ var userSchema = Schema({
     username: String,
     email: String,
     password: String,
-    role: String,
     image: String,
     tweets: [
         { type: Schema.Types.ObjectId, ref: 'tweet' },

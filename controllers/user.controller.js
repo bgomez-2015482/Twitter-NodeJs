@@ -16,7 +16,7 @@ var saveMaster = new User(userMaster);
 
 //TOKEN PRINCIPAL, USAR PARA PETICIÓN MASTER (REGISTER, LOGIN)
 
-let tokenMaster = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZlZTVkYjdiNTA3MDBiYjgzM2QwOGUiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM3NjMzMzAsImV4cCI6MTU5MzgxNzMzMH0.u1sEVjY-9pYTzsYuvf2yEderv1XQhjNB97aYGuDnUSg";
+let tokenMaster = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZmYzJjYjNmZGUzMTE4ZmMwYzI0MzIiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM4MTk5MDcsImV4cCI6MTU5Mzg3MzkwN30.Gi6VeU9fJAghvVtiYhntdT7kchLl279ylosgBCMSFBg";
 
 
 
@@ -61,7 +61,6 @@ function comands(req, res) {
                             user.name = params.name;
                             user.username = params.username;
                             user.email = params.email;
-                            user.role = "USER";
 
                             bcrypt.hash(params.password, null, null, (err, passwordHash) => {
                                 if (err) {
@@ -434,7 +433,7 @@ function comands(req, res) {
             }, (err, removeFollower) => {
                 if (err)
                     return res.status(500).send({
-                        message: "Error de petición!!"
+                        message: "Error al buscar el usuario"
                     });
                 if (!removeFollower) {
                     return res.status(404).send({
