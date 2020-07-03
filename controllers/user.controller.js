@@ -457,7 +457,7 @@ function comands(req, res) {
                             message: "No se puede dejar de seguir"
                         });
                     return res.status(200).send({
-                        message: newRemoveFollower
+                        "Se ha dejado de seguir al siguiente usuaio": newRemoveFollower
                     });
                 });
             });
