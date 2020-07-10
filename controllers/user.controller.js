@@ -9,15 +9,14 @@ const userMaster = {
     name: "Admin",
     username: "bigAdmin",
     email: "admin@gmail.com",
-    password: "3bd5665729",
+    password: "3bd5665729"
 };
 
 var saveMaster = new User(userMaster);
 
 //TOKEN PRINCIPAL, USAR PARA PETICIÓN MASTER (REGISTER, LOGIN)
 
-let tokenMaster = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZWZmYzJjYjNmZGUzMTE4ZmMwYzI0MzIiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTM4MTk5MDcsImV4cCI6MTU5Mzg3MzkwN30.Gi6VeU9fJAghvVtiYhntdT7kchLl279ylosgBCMSFBg";
-
+let tokenMaster = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjA3YzMzMjdmNmZiODFlNzA5YjYzYmYiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTQzNDQyODksImV4cCI6MTU5NjkzNjI4OX0.obY09OtTcHkt1KSE01J5tATZbVKydDoZV2ifXWLHxbA";
 
 
 function comands(req, res) {
