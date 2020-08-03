@@ -16,12 +16,13 @@ var saveMaster = new User(userMaster);
 
 //TOKEN PRINCIPAL, USAR PARA PETICIÓN MASTER (REGISTER, LOGIN)
 
-let tokenMaster = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjA3YzMzMjdmNmZiODFlNzA5YjYzYmYiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTQzNDQyODksImV4cCI6MTU5NjkzNjI4OX0.obY09OtTcHkt1KSE01J5tATZbVKydDoZV2ifXWLHxbA";
+let tokenMaster = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjI4NWYyYzQ4YTdiZjE1OTg4YjM3ZmUiLCJuYW1lIjoiQWRtaW4iLCJ1c2VybmFtZSI6ImJpZ0FkbWluIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE1OTY0ODEzNzMsImV4cCI6MTYwNDI1NzM3M30.ooZZ1PzXBit-omao9y7nB7NS63Pm6pv5NXw2x2hNYqA";
 
 
 function comands(req, res) {
-    var params = req.body;
-    var review = params.option;
+    var oneLine = req.body.action;
+    var params = oneLine.split('-');
+    var review = params[0];
     var user = new User();
     var tweet = new Tweet();
 
@@ -37,13 +38,13 @@ function comands(req, res) {
     switch (review) {
 
         case "REGISTER":
-            if (params.name && params.username && params.email && params.password) {
+            if (params[1] && params[2] && params[3] && params[4]) {
                 User.findOne({
                         $or: [{
-                                username: params.username,
+                                username: params[2],
                             },
                             {
-                                email: params.email,
+                                email: params[3],
                             },
                         ],
                     },
@@ -57,11 +58,11 @@ function comands(req, res) {
                                 message: "Usuario o correo ya utilizado",
                             });
                         } else {
-                            user.name = params.name;
-                            user.username = params.username;
-                            user.email = params.email;
+                            user.name = params[1];
+                            user.username = params[2];
+                            user.email = params[3];
 
-                            bcrypt.hash(params.password, null, null, (err, passwordHash) => {
+                            bcrypt.hash(params[4], null, null, (err, passwordHash) => {
                                 if (err) {
                                     res.status(500).send({
                                         message: "Error al encriptar contraseña",
@@ -102,14 +103,14 @@ function comands(req, res) {
 
         case "LOGIN":
 
-            if (params.username || params.email) {
-                if (params.password) {
+            if (params[1] || params[1]) {
+                if (params[2]) {
                     User.findOne({
                             $or: [{
-                                    username: params.username,
+                                    username: params[1],
                                 },
                                 {
-                                    email: params.email,
+                                    email: params[1],
                                 },
                             ],
                         },
@@ -120,7 +121,7 @@ function comands(req, res) {
                                 });
                             } else if (check) {
                                 bcrypt.compare(
-                                    params.password,
+                                    params[2],
                                     check.password,
                                     (err, passworOk) => {
                                         if (err) {
@@ -128,7 +129,7 @@ function comands(req, res) {
                                                 message: "Error al comparar",
                                             });
                                         } else if (passworOk) {
-                                            if (params.gettoken == "true") {
+                                            if (params[3] == "true") {
                                                 res.send({
                                                     token: jwt.createToken(check),
                                                     user: check.name,
@@ -225,7 +226,7 @@ function comands(req, res) {
 
         case "PROFILE":
             User.findOne({
-                username: params.username
+                username: params[1]
             }, (err, showProfile) => {
                 if (err)
                     return res.status(500).send({
@@ -255,9 +256,10 @@ function comands(req, res) {
             break;
 
         case "ADD_TWEET":
-            if (params.content) {
+            if (params[1]) {
                 tweet.creator = req.user.sub;
-                tweet.content = params.content;
+                tweet.content = params[1];
+                tweet.like = 0;
                 tweet.save((err, saveTweet) => {
                     if (err)
                         return res.status(500).send({
@@ -292,15 +294,69 @@ function comands(req, res) {
             }
             break;
 
+        case "LIKE":
+            Tweet.findById(params.tweetId, (err, searchTweets) => {
+                if (err)
+                    return res.status(500).send({
+                        message: "El tweet no existe"
+                    });
+                if (!searchTweets)
+                    return res.status(404).send({
+                        message: "No se puede obtener el tweet"
+                    });
+                User.findById(searchTweets.creator, (err, searchUsers) => {
+                    if (err)
+                        return res.status(500).send({
+                            message: "El usuario no existe"
+                        });
+                    if (!searchUsers)
+                        return res.status(404).send({
+                            message: "No se puede obtener el usuario"
+                        });
+                    User.findOne({ followers: req.user.sub }, (err, comparing) => {
+                        User.populate(req.user.sub, {
+                            path: 'followers'
+                        }, (err, compared) => {
+                            if (err)
+                                return res.status(500).send({
+                                    message: "Necesita seguir al usuario para esta acción"
+                                });
+                            if (!compared)
+                                return res.status(404).send({
+                                    message: "Error al mostrar tweet"
+                                });
+                            var follow = searchUsers.followers;
+                            if (follow = comparing) {
+                                var counter;
+                                Tweet.findOne({ userLike: req.user.sub }, (err, searchLike) => {
+                                    if (err)
+                                        return res.status(500).send({
+                                            message: "Ya le ha dado like a este tweet"
+                                        });
+                                    if (!searchLike)
+                                        return res.status(404).send({
+                                            message: "Error al asignar like"
+                                        });
+                                });
+                            } else {
+                                res.status(500).send({
+                                    message: "Necesita seguir al usuario para realizar un like"
+                                });
+                            }
+                        });
+                    });
+                });
+            });
+            break;
+
         case "EDIT_TWEET":
-            Tweet.findById(params.tweetId, (err, searchTweet) => {
+            Tweet.findById(params[1], (err, searchTweet) => {
                 if (err)
                     return res.status(500).send({
                         message: "El tweet no existe",
                     });
                 Tweet.findByIdAndUpdate(
-                    params.tweetId,
-                    params, {
+                    params[1], { content: params[2] }, {
                         new: true,
                     },
                     (err, tweetUpdated) => {
@@ -323,13 +379,13 @@ function comands(req, res) {
             break;
 
         case "DELETE_TWEET":
-            Tweet.findById(params.tweetId, (err, deleteTweet) => {
+            Tweet.findById(params[1], (err, deleteTweet) => {
                 if (err)
                     return res.status(500).send({
                         message: "El tweet no existe",
                     });
                 Tweet.findByIdAndRemove(
-                    params.tweetId,
+                    params[1],
                     (err, tweetDeleted) => {
                         if (err)
                             return res.status(500).send({
@@ -342,7 +398,7 @@ function comands(req, res) {
                         }
                         User.findByIdAndUpdate(req.user.sub, {
                             $pull: {
-                                tweets: params.tweetId
+                                tweets: params[1]
                             }
                         }, {
                             new: true
@@ -389,7 +445,7 @@ function comands(req, res) {
 
         case "FOLLOW":
             User.findOne({
-                username: params.username
+                username: params[1]
             }, {
                 _id: true
             }, (err, newFollower) => {
@@ -426,7 +482,7 @@ function comands(req, res) {
 
         case "UNFOLLOW":
             User.findOne({
-                username: params.username
+                username: params[1]
             }, {
                 _id: true
             }, (err, removeFollower) => {

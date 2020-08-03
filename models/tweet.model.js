@@ -5,7 +5,9 @@ var Schema = mongoose.Schema;
 
 var TweetSchema = Schema({
     creator: { type: Schema.Types.ObjectId, ref: 'user' },
-    content: String
+    content: String,
+    like: Number,
+    userLike: { type: Schema.Types.ObjectId, ref: 'user' }
 });
 
 module.exports = mongoose.model('tweet', TweetSchema);
