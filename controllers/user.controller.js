@@ -295,7 +295,7 @@ function comands(req, res) {
             break;
 
         case "LIKE":
-            Tweet.findById(params.tweetId, (err, searchTweets) => {
+            Tweet.findById(params[1], (err, searchTweets) => {
                 if (err)
                     return res.status(500).send({
                         message: "El tweet no existe"
@@ -313,7 +313,9 @@ function comands(req, res) {
                         return res.status(404).send({
                             message: "No se puede obtener el usuario"
                         });
-                    User.findOne({ followers: req.user.sub }, (err, comparing) => {
+                    User.findOne({
+                        followers: req.user.sub
+                    }, (err, comparing) => {
                         User.populate(req.user.sub, {
                             path: 'followers'
                         }, (err, compared) => {
@@ -327,16 +329,36 @@ function comands(req, res) {
                                 });
                             var follow = searchUsers.followers;
                             if (follow = comparing) {
-                                var counter;
-                                Tweet.findOne({ userLike: req.user.sub }, (err, searchLike) => {
-                                    if (err)
+                                Tweet.findOne({
+                                    userLike: req.user.sub
+                                }, (err, searchLike) => {
+                                    if (searchLike) {
                                         return res.status(500).send({
-                                            message: "Ya le ha dado like a este tweet"
+                                            message: 'Ya ha dado like'
                                         });
-                                    if (!searchLike)
-                                        return res.status(404).send({
-                                            message: "Error al asignar like"
+                                    } else {
+                                        var counter = searchTweets.like;
+                                        Tweet.findByIdAndUpdate(params[1], {
+                                            like: counter + 1,
+                                            $push: {
+                                                userLike: req.user.sub
+                                            }
+                                        }, {
+                                            new: true
+                                        }, (err, likeUpdated) => {
+                                            if (err)
+                                                return res.status(500).send({
+                                                    message: 'Error en la petición Like'
+                                                });
+                                            if (!likeUpdated)
+                                                return res.status(404).send({
+                                                    message: 'No se pueden agregar los like'
+                                                });
+                                            return res.status(200).send({
+                                                message: likeUpdated
+                                            });
                                         });
+                                    }
                                 });
                             } else {
                                 res.status(500).send({
@@ -349,20 +371,165 @@ function comands(req, res) {
             });
             break;
 
+        case "DISLIKE_TWEET":
+            Tweet.findById(params[1], (err, searchTweets) => {
+                if (err)
+                    return res.status(500).send({
+                        message: 'El tweet no eiste'
+                    });
+                if (!searchTweets)
+                    return res.status(404).send({
+                        message: 'No se puede obtener el tweet'
+                    });
+                User.findById(searchTweets.creator, (err, searchUsers) => {
+                    if (err)
+                        return res.status(500).send({
+                            message: 'El usuario no existe'
+                        });
+                    if (!searchUsers)
+                        return res.status(404).send({
+                            message: 'No se puede obtener el usuario'
+                        });
+                    User.findOne({
+                        followers: req.user.sub
+                    }, (err, comparing) => {
+                        User.populate(req.user.sub, {
+                            path: 'followers'
+                        }, (err, compared) => {
+                            if (err)
+                                return res.status(500).send({
+                                    message: 'Necesita seguir al usuario para esta acción'
+                                });
+                            if (!compared)
+                                return res.status(404).send({
+                                    message: 'Error al mostrar tweet'
+                                });
+                            var follow = searchUsers.followers;
+                            if (follow = comparing) {
+                                Tweet.findOne({
+                                    userLike: req.user.sub
+                                }, (err, searchLike) => {
+                                    if (searchLike) {
+                                        var counter = searchTweets.like;
+                                        Tweet.findByIdAndUpdate(params[1], {
+                                            like: counter - 1,
+                                            $pull: {
+                                                userLike: req.user.sub
+                                            }
+                                        }, {
+                                            new: true
+                                        }, (err, likeUpdated) => {
+                                            if (err)
+                                                return res.status(500).send({
+                                                    message: 'Error en la petición like'
+                                                });
+                                            if (!likeUpdated)
+                                                return res.status(404).send({
+                                                    message: 'No se pueden remover los like'
+                                                });
+                                            return res.status(200).send({
+                                                'Se ha removido el like del siguiente tweet: ': likeUpdated
+                                            });
+                                        });
+                                    } else {
+                                        return res.status(500).send({
+                                            message: 'No ha dado like para removerlo'
+                                        });
+                                    }
+                                });
+                            } else {
+                                res.status(500).send({
+                                    message: "Necesita seguir al usuario para remover un like"
+                                });
+                            }
+                        });
+                    });
+                });
+            });
+            break;
+
+        case "REPLY_TWEET":
+            Tweet.findById(params[1], (err, searchTweet) => {
+                if (err)
+                    return res.status(500).send({
+                        message: 'El tweet no existe'
+                    });
+                Tweet.findByIdAndUpdate(params[1], {
+                    $push: {
+                        coment: {
+                            comentId: req.user.sub,
+                            comentContainer: params[2]
+                        }
+                    }
+                }, {
+                    new: true
+                }, (err, searchTweet) => {
+                    if (err)
+                        res.status(500).send({
+                            message: 'Error al actualizar'
+                        });
+                    if (searchTweet)
+                        return res.status(200).send({
+                            message: searchTweet
+                        });
+                });
+            });
+            break;
+
+        case "RETWEET":
+            Tweet.findById(params[1], (err, searchTweet) => {
+                if (err)
+                    return res.status(500).send({
+                        message: 'El tweet no existe'
+                    });
+                var counter = searchTweet.creator + '1';
+                User.findByIdAndUpdate(req.user.sub, { $pull: { retweet: { retweetId: counter } } }, { new: true }, (err, searchUser) => {
+                    if (err)
+                        res.status(500).send({
+                            message: 'Error al actualizar'
+                        });
+                });
+                if (params[2] == null) {
+                    User.findByIdAndUpdate(req.user.sub, { $push: { retweet: { retweetId: counter, retweetRef: params[1] } } }, { new: true }, (err, updateTweet) => {
+                        if (err)
+                            return res.status(500).send({
+                                message: 'Error al actualizar'
+                            });
+                        return res.status(200).send({
+                            message: updateTweet
+                        });
+                    });
+                } else {
+                    User.findByIdAndUpdate(req.user.sub, { $push: { retweet: { retweetId: counter, retweetRef: params[1], comentContainer: params[2] } } }, { new: true }, (err, updateTweet) => {
+                        if (err)
+                            return res.status(500).send({
+                                message: 'Error al actualizar'
+                            });
+                        return res.status(200).send({
+                            message: updateTweet
+                        });
+                    });
+                }
+
+            });
+            break;
+
         case "EDIT_TWEET":
             Tweet.findById(params[1], (err, searchTweet) => {
                 if (err)
                     return res.status(500).send({
-                        message: "El tweet no existe",
+                        message: 'El tweet no existe'
                     });
                 Tweet.findByIdAndUpdate(
-                    params[1], { content: params[2] }, {
+                    params[1], {
+                        content: params[2]
+                    }, {
                         new: true,
                     },
                     (err, tweetUpdated) => {
                         if (err) {
                             res.status(500).send({
-                                message: "Error general al actualizar",
+                                message: 'Error general al actualizar',
                             });
                         } else if (tweetUpdated) {
                             res.send({
@@ -370,7 +537,7 @@ function comands(req, res) {
                             });
                         } else {
                             res.status(404).send({
-                                message: "No se ha podido actualizar",
+                                message: 'No se ha podido actualizar',
                             });
                         }
                     }
@@ -382,7 +549,7 @@ function comands(req, res) {
             Tweet.findById(params[1], (err, deleteTweet) => {
                 if (err)
                     return res.status(500).send({
-                        message: "El tweet no existe",
+                        message: 'El tweet no existe',
                     });
                 Tweet.findByIdAndRemove(
                     params[1],

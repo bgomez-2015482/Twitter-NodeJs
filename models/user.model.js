@@ -15,6 +15,11 @@ var userSchema = Schema({
     followers: [
         { type: Schema.Types.ObjectId, ref: 'user' },
     ],
+    retweet: {
+        retweetId: String,
+        retweetRef: { type: Schema.Types.ObjectId, ref: 'tweet' },
+        comentContainer: String
+    }
 });
 
 module.exports = mongoose.model('user', userSchema);
