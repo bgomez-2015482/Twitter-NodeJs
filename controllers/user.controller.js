@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var User = require("../models/user.model");
 var bcrypt = require("bcrypt-nodejs");
@@ -22,7 +22,7 @@ let tokenMaster = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjI4NWYyYzQ4
 function comands(req, res) {
     var oneLine = req.body.action;
     var params = oneLine.split('-');
-    var review = params[0];
+    var review = params[0].toUpperCase();
     var user = new User();
     var tweet = new Tweet();
 
@@ -483,14 +483,31 @@ function comands(req, res) {
                         message: 'El tweet no existe'
                     });
                 var counter = searchTweet.creator + '1';
-                User.findByIdAndUpdate(req.user.sub, { $pull: { retweet: { retweetId: counter } } }, { new: true }, (err, searchUser) => {
+                User.findByIdAndUpdate(req.user.sub, {
+                    $pull: {
+                        retweet: {
+                            retweetId: counter
+                        }
+                    }
+                }, {
+                    new: true
+                }, (err, searchUser) => {
                     if (err)
                         res.status(500).send({
                             message: 'Error al actualizar'
                         });
                 });
                 if (params[2] == null) {
-                    User.findByIdAndUpdate(req.user.sub, { $push: { retweet: { retweetId: counter, retweetRef: params[1] } } }, { new: true }, (err, updateTweet) => {
+                    User.findByIdAndUpdate(req.user.sub, {
+                        $push: {
+                            retweet: {
+                                retweetId: counter,
+                                retweetRef: params[1]
+                            }
+                        }
+                    }, {
+                        new: true
+                    }, (err, updateTweet) => {
                         if (err)
                             return res.status(500).send({
                                 message: 'Error al actualizar'
@@ -500,7 +517,17 @@ function comands(req, res) {
                         });
                     });
                 } else {
-                    User.findByIdAndUpdate(req.user.sub, { $push: { retweet: { retweetId: counter, retweetRef: params[1], comentContainer: params[2] } } }, { new: true }, (err, updateTweet) => {
+                    User.findByIdAndUpdate(req.user.sub, {
+                        $push: {
+                            retweet: {
+                                retweetId: counter,
+                                retweetRef: params[1],
+                                comentContainer: params[2]
+                            }
+                        }
+                    }, {
+                        new: true
+                    }, (err, updateTweet) => {
                         if (err)
                             return res.status(500).send({
                                 message: 'Error al actualizar'
@@ -591,21 +618,41 @@ function comands(req, res) {
             break;
 
         case "VIEW_TWEETS":
-
-            Tweet.find({
-                creator: req.user.sub
-            }, (err, showTweets) => {
+            User.find({
+                username: params[1]
+            }, { _id: true }, (err, searchUser) => {
                 if (err)
                     return res.status(500).send({
-                        message: "Error de petición"
+                        message: "Error de petición User"
                     });
-                if (!showTweets) {
+                if (!searchUser)
                     return res.status(404).send({
-                        message: "Error al mostrar datos"
+                        message: "Error al mostrar datos en User"
                     });
-                }
-                return res.status(200).send({
-                    'Tweets': showTweets
+                var search = searchUser;
+                Tweet.find({ creator: search }, (err, showTweet) => {
+                    if (err)
+                        return res.status(500).send({
+                            message: 'Error de petición es Tweet'
+                        });
+                    if (!showTweet)
+                        return res.status(404).send({
+                            message: "Error al mostrar datos en Tweet"
+                        });
+                    User.find({ username: params[1] }, { 'retweet': true }, (err, Retweets) => {
+                        if (err)
+                            return res.status(500).send({
+                                message: "Error al buscar usuario"
+                            });
+                        if (!Retweets)
+                            return res.status(500).send({
+                                message: "Error al mostrar usuarios"
+                            });
+                        return res.status(500).send({
+                            'Tweets': showTweet ||
+                                Retweets
+                        });
+                    });
                 });
             });
             break;
