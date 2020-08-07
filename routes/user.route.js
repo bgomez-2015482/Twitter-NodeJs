@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var express = require('express');
 var userController = require('../controllers/user.controller');
 var mdAuth = require('../middlewares/authenticated');

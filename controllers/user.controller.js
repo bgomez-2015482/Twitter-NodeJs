@@ -234,7 +234,7 @@ function comands(req, res) {
                     });
                 if (!showProfile)
                     return res.status(404).send({
-                        message: "Error al mostrar datos"
+                        message: "El usuario no existe"
                     });
                 Tweet.populate(showProfile, {
                     path: 'tweets'
@@ -302,7 +302,7 @@ function comands(req, res) {
                     });
                 if (!searchTweets)
                     return res.status(404).send({
-                        message: "No se puede obtener el tweet"
+                        message: "El tweet no existe"
                     });
                 User.findById(searchTweets.creator, (err, searchUsers) => {
                     if (err)
@@ -370,6 +370,7 @@ function comands(req, res) {
                 });
             });
             break;
+
 
         case "DISLIKE_TWEET":
             Tweet.findById(params[1], (err, searchTweets) => {
@@ -444,6 +445,34 @@ function comands(req, res) {
                             }
                         });
                     });
+                });
+            });
+            break;
+
+        case "REPLY_TWEET":
+            Tweet.findById(params[1], (err, searchTweet) => {
+                if (err)
+                    return res.status(500).send({
+                        message: 'El tweet no existe'
+                    });
+                Tweet.findByIdAndUpdate(params[1], {
+                    $push: {
+                        coment: {
+                            comentId: req.user.sub,
+                            comentContainer: params[2]
+                        }
+                    }
+                }, {
+                    new: true
+                }, (err, searchTweet) => {
+                    if (err)
+                        res.status(500).send({
+                            message: 'Error al actualizar'
+                        });
+                    if (searchTweet)
+                        return res.status(200).send({
+                            message: searchTweet
+                        });
                 });
             });
             break;
@@ -587,7 +616,7 @@ function comands(req, res) {
                             });
                         if (!tweetDeleted) {
                             res.status(404).send({
-                                message: "No se ha podido eliminar el tweet"
+                                message: "El tweet ya ha sido eliminado"
                             });
                         }
                         User.findByIdAndUpdate(req.user.sub, {

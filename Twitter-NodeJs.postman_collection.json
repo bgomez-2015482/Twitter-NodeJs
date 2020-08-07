@@ -2,34 +2,25 @@
 	"id": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
 	"name": "Twitter-NodeJs",
 	"description": "",
-	"order": [],
-	"folders": [
-		{
-			"name": "Routes",
-			"description": "",
-			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
-			"order": [
-				"6b1f6181-82b8-ce84-45e6-607026fd4628",
-				"14bca3d2-e11f-cf7f-abaa-bcca61624587",
-				"7d9e8a25-fcde-0f3d-2137-d826b0620786",
-				"b66894c7-1d6c-71d5-6a13-ba1242158afa",
-				"a8ce0caf-fe32-347e-dbab-c58f9e9a5b59",
-				"71e40da9-a061-ed64-33da-5da3fa340b2c",
-				"b9c4ad8e-f11b-0b42-aa8d-081df086bf48",
-				"b6ca3d80-319b-f463-8551-c6b344cde9fd",
-				"f572f5ec-99f8-bb4b-0646-5ea05e0242d9",
-				"997fc1ab-780b-c2a1-ff22-280c9a55d233"
-			],
-			"owner": 0,
-			"folders_order": [],
-			"id": "e40f6552-5e3e-2529-e61c-8c4c69bbe569"
-		}
+	"order": [
+		"6b1f6181-82b8-ce84-45e6-607026fd4628",
+		"14bca3d2-e11f-cf7f-abaa-bcca61624587",
+		"7d9e8a25-fcde-0f3d-2137-d826b0620786",
+		"b66894c7-1d6c-71d5-6a13-ba1242158afa",
+		"a8ce0caf-fe32-347e-dbab-c58f9e9a5b59",
+		"71e40da9-a061-ed64-33da-5da3fa340b2c",
+		"997fc1ab-780b-c2a1-ff22-280c9a55d233",
+		"1791f86d-b9fe-41db-883d-3af74c3b0871",
+		"b6ca3d80-319b-f463-8551-c6b344cde9fd",
+		"f572f5ec-99f8-bb4b-0646-5ea05e0242d9",
+		"646f782e-07bc-a1e4-56fd-2974ce17079f",
+		"74854530-b2c5-6e9f-d579-3d4439a41483",
+		"b9c4ad8e-f11b-0b42-aa8d-081df086bf48"
 	],
-	"folders_order": [
-		"e40f6552-5e3e-2529-e61c-8c4c69bbe569"
-	],
+	"folders": [],
+	"folders_order": [],
 	"timestamp": 1593389440568,
-	"owner": 0,
+	"owner": "11654602",
 	"public": false,
 	"requests": [
 		{
@@ -50,7 +41,6 @@
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -59,38 +49,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "LOGIN-Bgomez-3bd5665729-true",
+					"value": "LOGIN-DiegoC-3bd5665729-true",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "LOGIN",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "username",
-					"value": "Bgomez",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "password",
-					"value": "3bd5665729",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "gettoken",
-					"value": "true",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -98,8 +60,94 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596481434550,
+			"time": 1596829341904,
 			"name": "LOGIN",
+			"description": "",
+			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
+			"responses": []
+		},
+		{
+			"id": "1791f86d-b9fe-41db-883d-3af74c3b0871",
+			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWJjZDRkZjQ5MzFjMmMxNmE4NTkiLCJuYW1lIjoiQWxleCIsInVzZXJuYW1lIjoiQWxleGdnZyIsImVtYWlsIjoiYWxleEBnbWFpbC5jb20iLCJpYXQiOjE1OTY4Mjk2MjAsImV4cCI6MTYwNDYwNTYyMH0.H1QsDR-FFo8ra9DiA6don6-2Is9BW_yLWzjKiuRoe_A\"\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWJjZDRkZjQ5MzFjMmMxNmE4NTkiLCJuYW1lIjoiQWxleCIsInVzZXJuYW1lIjoiQWxleGdnZyIsImVtYWlsIjoiYWxleEBnbWFpbC5jb20iLCJpYXQiOjE1OTY4Mjk2MjAsImV4cCI6MTYwNDYwNTYyMH0.H1QsDR-FFo8ra9DiA6don6-2Is9BW_yLWzjKiuRoe_A\"",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3800/api/comands",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "action",
+					"value": "DISLIKE_TWEET-5f2daba64df4931c2c16a858",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1596829743242,
+			"name": "DISLIKE",
+			"description": "",
+			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
+			"responses": []
+		},
+		{
+			"id": "646f782e-07bc-a1e4-56fd-2974ce17079f",
+			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5OTQzLCJleHAiOjE2MDQ2MDU5NDN9.xWIAMOXXy0HHTiUbkaTLCv60RVqOp67HhQHpQmwtgIc\"\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5OTQzLCJleHAiOjE2MDQ2MDU5NDN9.xWIAMOXXy0HHTiUbkaTLCv60RVqOp67HhQHpQmwtgIc\"",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3800/api/comands",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "action",
+					"value": "REPLY_TWEET-5f2daba64df4931c2c16a858-coment",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1596829961499,
+			"name": "REPLY_TWEET",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
 			"responses": []
@@ -122,7 +170,6 @@
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -131,45 +178,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "REGISTER-Bryan-Bgomez-bryan@gmail.com-52258595",
+					"value": "REGISTER-DIego-DiegoC-diego@gmail.com-3bd5665729",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "REGISTER",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "name",
-					"value": "Bryan",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "username",
-					"value": "Bgomez",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "email",
-					"value": "bgomez@gmail.com",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "password",
-					"value": "3bd5665729",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -177,7 +189,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596481522415,
+			"time": 1596828798620,
 			"name": "REGISTER",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
@@ -185,11 +197,11 @@
 		},
 		{
 			"id": "71e40da9-a061-ed64-33da-5da3fa340b2c",
-			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"\nContent-Type: application/x-www-form-urlencoded\n",
+			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkOTMzMTY2ZGVlMzJhZjhmZjQ1NDIiLCJuYW1lIjoiUGVkcm8iLCJ1c2VybmFtZSI6IlBlZHJvbyIsImVtYWlsIjoicGVkcm9AZ21haWwuY29tIiwiaWF0IjoxNTk2ODIyMzI3LCJleHAiOjE2MDQ1OTgzMjd9.uCmj9kNRG7j1oCs76ttfnHYZoPv7mKOr7mWFF_Dn8sI\"\nContent-Type: application/x-www-form-urlencoded\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkOTMzMTY2ZGVlMzJhZjhmZjQ1NDIiLCJuYW1lIjoiUGVkcm8iLCJ1c2VybmFtZSI6IlBlZHJvbyIsImVtYWlsIjoicGVkcm9AZ21haWwuY29tIiwiaWF0IjoxNTk2ODIyMzI3LCJleHAiOjE2MDQ1OTgzMjd9.uCmj9kNRG7j1oCs76ttfnHYZoPv7mKOr7mWFF_Dn8sI\"",
 					"description": "",
 					"enabled": true
 				},
@@ -201,7 +213,6 @@
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -214,20 +225,6 @@
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "PROFILE",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "username",
-					"value": "Alexgg",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -235,15 +232,57 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596480484649,
+			"time": 1596829357439,
 			"name": "PROFILE",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
 			"responses": []
 		},
 		{
+			"id": "74854530-b2c5-6e9f-d579-3d4439a41483",
+			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5OTQzLCJleHAiOjE2MDQ2MDU5NDN9.xWIAMOXXy0HHTiUbkaTLCv60RVqOp67HhQHpQmwtgIc\"\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5OTQzLCJleHAiOjE2MDQ2MDU5NDN9.xWIAMOXXy0HHTiUbkaTLCv60RVqOp67HhQHpQmwtgIc\"",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3800/api/comands",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "action",
+					"value": "RETWEET-5f2daba64df4931c2c16a858-Retweet ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1596830022889,
+			"name": "RETWEET",
+			"description": "",
+			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
+			"responses": []
+		},
+		{
 			"id": "7d9e8a25-fcde-0f3d-2137-d826b0620786",
-			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"\n",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI4ODA1LCJleHAiOjE2MDQ2MDQ4MDV9.b8s9HMmLoH0vY0m8B0RVQIT7XGyPGSi5-L2G1M-kBPg\"\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -253,13 +292,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI4ODA1LCJleHAiOjE2MDQ2MDQ4MDV9.b8s9HMmLoH0vY0m8B0RVQIT7XGyPGSi5-L2G1M-kBPg\"",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -268,24 +306,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "ADD_TWEET-Nuevo Tweet 2",
+					"value": "ADD_TWEET-Tweet de Diego",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "ADD_TWEET",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "content",
-					"value": "Hola soy Bryan y este es mi primer tweet.",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -293,7 +317,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596479488747,
+			"time": 1596828819772,
 			"name": "ADD_TWEET",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
@@ -301,7 +325,7 @@
 		},
 		{
 			"id": "997fc1ab-780b-c2a1-ff22-280c9a55d233",
-			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQyZTI4NzNjMTI5MDRhMWI1YjQiLCJuYW1lIjoiQWxleCIsInVzZXJuYW1lIjoiQWxleGdnZyIsImVtYWlsIjoiQWxleEBnbWFpbC5jb20iLCJpYXQiOjE1OTQ5Njk0NDEsImV4cCI6MTU5NzU2MTQ0MX0.tyGAYRB0eoprwBZwwpuUIjKAKaC_3pNdyiHeytZuHuk\"\n",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5MjU5LCJleHAiOjE2MDQ2MDUyNTl9.2NhWiLq3poYMta4AhG7_KtDKbtmY0NlswUyPzxBGTOs\"\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -311,13 +335,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQyZTI4NzNjMTI5MDRhMWI1YjQiLCJuYW1lIjoiQWxleCIsInVzZXJuYW1lIjoiQWxleGdnZyIsImVtYWlsIjoiQWxleEBnbWFpbC5jb20iLCJpYXQiOjE1OTQ5Njk0NDEsImV4cCI6MTU5NzU2MTQ0MX0.tyGAYRB0eoprwBZwwpuUIjKAKaC_3pNdyiHeytZuHuk\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5MjU5LCJleHAiOjE2MDQ2MDUyNTl9.2NhWiLq3poYMta4AhG7_KtDKbtmY0NlswUyPzxBGTOs\"",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -326,24 +349,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "LIKE",
+					"value": "LIKE-5f2daba64df4931c2c16a858",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "LIKE",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "tweetId",
-					"value": "5f114da92873c12904a1b5c3",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -351,7 +360,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596481094182,
+			"time": 1596829331813,
 			"name": "LIKE",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
@@ -359,7 +368,7 @@
 		},
 		{
 			"id": "a8ce0caf-fe32-347e-dbab-c58f9e9a5b59",
-			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"\n",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkOTMzMTY2ZGVlMzJhZjhmZjQ1NDIiLCJuYW1lIjoiUGVkcm8iLCJ1c2VybmFtZSI6IlBlZHJvbyIsImVtYWlsIjoicGVkcm9AZ21haWwuY29tIiwiaWF0IjoxNTk2ODIyMzI3LCJleHAiOjE2MDQ1OTgzMjd9.uCmj9kNRG7j1oCs76ttfnHYZoPv7mKOr7mWFF_Dn8sI\"\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -369,13 +378,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkOTMzMTY2ZGVlMzJhZjhmZjQ1NDIiLCJuYW1lIjoiUGVkcm8iLCJ1c2VybmFtZSI6IlBlZHJvbyIsImVtYWlsIjoicGVkcm9AZ21haWwuY29tIiwiaWF0IjoxNTk2ODIyMzI3LCJleHAiOjE2MDQ1OTgzMjd9.uCmj9kNRG7j1oCs76ttfnHYZoPv7mKOr7mWFF_Dn8sI\"",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -384,24 +392,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "DELETE_TWEET-5f2857f6576eee0f5c49976c",
+					"value": "DELETE_TWEET-5f2d93d866dee32af8ff454f",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "DELETE_TWEET",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "tweetId",
-					"value": "5f07cfc4e7ffe00bdcfa2757",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -409,7 +403,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596480271631,
+			"time": 1596829344679,
 			"name": "DELETE_TWEET",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
@@ -417,7 +411,7 @@
 		},
 		{
 			"id": "b66894c7-1d6c-71d5-6a13-ba1242158afa",
-			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"\n",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nAuthorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkOTMzMTY2ZGVlMzJhZjhmZjQ1NDIiLCJuYW1lIjoiUGVkcm8iLCJ1c2VybmFtZSI6IlBlZHJvbyIsImVtYWlsIjoicGVkcm9AZ21haWwuY29tIiwiaWF0IjoxNTk2ODIyMzI3LCJleHAiOjE2MDQ1OTgzMjd9.uCmj9kNRG7j1oCs76ttfnHYZoPv7mKOr7mWFF_Dn8sI\"\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -427,13 +421,12 @@
 				},
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkOTMzMTY2ZGVlMzJhZjhmZjQ1NDIiLCJuYW1lIjoiUGVkcm8iLCJ1c2VybmFtZSI6IlBlZHJvbyIsImVtYWlsIjoicGVkcm9AZ21haWwuY29tIiwiaWF0IjoxNTk2ODIyMzI3LCJleHAiOjE2MDQ1OTgzMjd9.uCmj9kNRG7j1oCs76ttfnHYZoPv7mKOr7mWFF_Dn8sI\"",
 					"description": "",
 					"enabled": true
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -442,31 +435,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "EDIT_TWEET-5f2857f6576eee0f5c49976c-UPDATE",
+					"value": "EDIT_TWEET-5f2d934266dee32af8ff4547-Tweet actualizado de Pedro",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "EDIT_TWEET",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "content",
-					"value": "actualización de tweet",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "tweetId",
-					"value": "5f07cfc4e7ffe00bdcfa2757",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -474,7 +446,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596480116873,
+			"time": 1596822519484,
 			"name": "EDIT_TWEET",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
@@ -482,11 +454,11 @@
 		},
 		{
 			"id": "b6ca3d80-319b-f463-8551-c6b344cde9fd",
-			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"\nContent-Type: application/x-www-form-urlencoded\n",
+			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5MjU5LCJleHAiOjE2MDQ2MDUyNTl9.2NhWiLq3poYMta4AhG7_KtDKbtmY0NlswUyPzxBGTOs\"\nContent-Type: application/x-www-form-urlencoded\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5MjU5LCJleHAiOjE2MDQ2MDUyNTl9.2NhWiLq3poYMta4AhG7_KtDKbtmY0NlswUyPzxBGTOs\"",
 					"description": "",
 					"enabled": true
 				},
@@ -498,7 +470,6 @@
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -507,24 +478,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "FOLLOW-Manolo",
+					"value": "FOLLOW-Bgomez",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "FOLLOW",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "username",
-					"value": "Alexgg",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -532,7 +489,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596480968946,
+			"time": 1596829334960,
 			"name": "FOLLOW",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
@@ -540,11 +497,11 @@
 		},
 		{
 			"id": "b9c4ad8e-f11b-0b42-aa8d-081df086bf48",
-			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"\nContent-Type: application/x-www-form-urlencoded\n",
+			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5MjU5LCJleHAiOjE2MDQ2MDUyNTl9.2NhWiLq3poYMta4AhG7_KtDKbtmY0NlswUyPzxBGTOs\"\nContent-Type: application/x-www-form-urlencoded\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ3OTI1MywiZXhwIjoxNTk5MDcxMjUzfQ.Hofvh0JA0T0spMWo17hIlfLYw8WrKwG81GeAo1bYzg0\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWM3YzQ0ODE1YzFlOWM1NzljMmUiLCJuYW1lIjoiREllZ28iLCJ1c2VybmFtZSI6IkRpZWdvQyIsImVtYWlsIjoiZGllZ29AZ21haWwuY29tIiwiaWF0IjoxNTk2ODI5MjU5LCJleHAiOjE2MDQ2MDUyNTl9.2NhWiLq3poYMta4AhG7_KtDKbtmY0NlswUyPzxBGTOs\"",
 					"description": "",
 					"enabled": true
 				},
@@ -556,7 +513,6 @@
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -565,24 +521,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "VIEW_TWEETS-Bgomez",
+					"value": "view_tweets-Bgomez",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "VIEW_TWEETS",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "username",
-					"value": "Alexgg",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -590,7 +532,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596480800783,
+			"time": 1596830019113,
 			"name": "VIEW_TWEETS",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
@@ -598,11 +540,11 @@
 		},
 		{
 			"id": "f572f5ec-99f8-bb4b-0646-5ea05e0242d9",
-			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ4MTAwMCwiZXhwIjoxNTk5MDczMDAwfQ.wAr9b-Zp1QCNC2CjYUgO3oXEVHHbabgkdQTC6DGEuc8\"\nContent-Type: application/x-www-form-urlencoded\n",
+			"headers": "Authorization: \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWJjZDRkZjQ5MzFjMmMxNmE4NTkiLCJuYW1lIjoiQWxleCIsInVzZXJuYW1lIjoiQWxleGdnZyIsImVtYWlsIjoiYWxleEBnbWFpbC5jb20iLCJpYXQiOjE1OTY4Mjk4MjIsImV4cCI6MTYwNDYwNTgyMn0.SD2QnwtOaF9crkvdRZkNbp7pVZV1NfIqYnLGeTmXNUE\"\nContent-Type: application/x-www-form-urlencoded\n",
 			"headerData": [
 				{
 					"key": "Authorization",
-					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjExNGQzZjI4NzNjMTI5MDRhMWI1YjYiLCJuYW1lIjoiQnJ5YW4iLCJ1c2VybmFtZSI6IkJnb21leiIsImVtYWlsIjoiQmdvbWV6QGdtYWlsLmNvbSIsImlhdCI6MTU5NjQ4MTAwMCwiZXhwIjoxNTk5MDczMDAwfQ.wAr9b-Zp1QCNC2CjYUgO3oXEVHHbabgkdQTC6DGEuc8\"",
+					"value": "\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZjJkYWJjZDRkZjQ5MzFjMmMxNmE4NTkiLCJuYW1lIjoiQWxleCIsInVzZXJuYW1lIjoiQWxleGdnZyIsImVtYWlsIjoiYWxleEBnbWFpbC5jb20iLCJpYXQiOjE1OTY4Mjk4MjIsImV4cCI6MTYwNDYwNTgyMn0.SD2QnwtOaF9crkvdRZkNbp7pVZV1NfIqYnLGeTmXNUE\"",
 					"description": "",
 					"enabled": true
 				},
@@ -614,7 +556,6 @@
 				}
 			],
 			"url": "localhost:3800/api/comands",
-			"folder": "e40f6552-5e3e-2529-e61c-8c4c69bbe569",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -623,24 +564,10 @@
 			"data": [
 				{
 					"key": "action",
-					"value": "UNFOLLOW-Manolo",
+					"value": "UNFOLLOW-Bgomez",
 					"description": "",
 					"type": "text",
 					"enabled": true
-				},
-				{
-					"key": "option",
-					"value": "UNFOLLOW",
-					"description": "",
-					"type": "text",
-					"enabled": false
-				},
-				{
-					"key": "username",
-					"value": "Alexgg",
-					"description": "",
-					"type": "text",
-					"enabled": false
 				}
 			],
 			"dataMode": "urlencoded",
@@ -648,7 +575,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596481096433,
+			"time": 1596829853441,
 			"name": "UNFOLLOW",
 			"description": "",
 			"collectionId": "9dc073e3-44cd-19f0-f922-c70fa0373f77",
