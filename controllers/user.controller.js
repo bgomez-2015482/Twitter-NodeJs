@@ -571,78 +571,96 @@ function comands(req, res) {
             break;
 
         case "EDIT_TWEET":
-            Tweet.findById(params[1], (err, searchTweet) => {
-                if (err)
-                    return res.status(500).send({
-                        message: 'El tweet no existe'
+            Tweet.findById(params[1], (err, searchUser) => {
+                if (searchUser.creator == req.user.sub) {
+                    Tweet.findById(params[1], (err, searchTweet) => {
+                        if (err)
+                            return res.status(500).send({
+                                message: 'El tweet no existe'
+                            });
+                        Tweet.findByIdAndUpdate(
+                            params[1], {
+                                content: params[2]
+                            }, {
+                                new: true,
+                            },
+                            (err, tweetUpdated) => {
+                                if (err) {
+                                    res.status(500).send({
+                                        message: 'Error general al actualizar',
+                                    });
+                                } else if (tweetUpdated) {
+                                    res.send({
+                                        tweet: tweetUpdated,
+                                    });
+                                } else {
+                                    return res.status(404).send({
+                                        message: 'No se ha podido actualizar',
+                                    });
+                                }
+                            }
+                        );
                     });
-                Tweet.findByIdAndUpdate(
-                    params[1], {
-                        content: params[2]
-                    }, {
-                        new: true,
-                    },
-                    (err, tweetUpdated) => {
-                        if (err) {
-                            res.status(500).send({
-                                message: 'Error general al actualizar',
-                            });
-                        } else if (tweetUpdated) {
-                            res.send({
-                                tweet: tweetUpdated,
-                            });
-                        } else {
-                            res.status(404).send({
-                                message: 'No se ha podido actualizar',
-                            });
-                        }
-                    }
-                );
+                } else {
+                    return res.status(500).send({
+                        message: "No puede editar este tweet"
+                    });
+                }
+
             });
+
             break;
 
         case "DELETE_TWEET":
-            Tweet.findById(params[1], (err, deleteTweet) => {
-                if (err)
-                    return res.status(500).send({
-                        message: 'El tweet no existe',
-                    });
-                Tweet.findByIdAndRemove(
-                    params[1],
-                    (err, tweetDeleted) => {
+            Tweet.findById(params[1], (err, searchUser) => {
+                if (searchUser.creator == req.user.sub) {
+                    Tweet.findById(params[1], (err, deleteTweet) => {
                         if (err)
                             return res.status(500).send({
-                                message: "Error general al eliminar",
+                                message: 'El tweet no existe',
                             });
-                        if (!tweetDeleted) {
-                            res.status(404).send({
-                                message: "El tweet ya ha sido eliminado"
-                            });
-                        }
-                        User.findByIdAndUpdate(req.user.sub, {
-                            $pull: {
-                                tweets: params[1]
-                            }
-                        }, {
-                            new: true
-                        }, (err, newTweetDeleted) => {
-                            if (err)
-                                res.status(500).send({
-                                    message: "Error de petición"
+                        Tweet.findByIdAndRemove(
+                            params[1],
+                            (err, tweetDeleted) => {
+                                if (err)
+                                    return res.status(500).send({
+                                        message: "Error general al eliminar",
+                                    });
+                                if (!tweetDeleted) {
+                                    res.status(404).send({
+                                        message: "El tweet ya ha sido eliminado"
+                                    });
+                                }
+                                User.findByIdAndUpdate(req.user.sub, {
+                                    $pull: {
+                                        tweets: params[1]
+                                    }
+                                }, {
+                                    new: true
+                                }, (err, newTweetDeleted) => {
+                                    if (err)
+                                        res.status(500).send({
+                                            message: "Error de petición"
+                                        });
+                                    if (!newTweetDeleted) {
+                                        res.status(500).send({
+                                            message: "No se puede eliminar la referencia"
+                                        });
+                                    }
+                                    if (tweetDeleted) {
+                                        return res.status(200).send({
+                                            "Se ha eliminado el siguiente tweet": tweetDeleted,
+                                        });
+                                    }
                                 });
-                            if (!newTweetDeleted) {
-                                res.status(500).send({
-                                    message: "No se puede eliminar la referencia"
-                                });
                             }
-                            if (tweetDeleted) {
-                                return res.status(200).send({
-                                    "Se ha eliminado el siguiente tweet": tweetDeleted,
-                                });
-                            }
-                        });
-                    }
-                );
+                        );
+                    });
+                } else {
+                    return res.status(500).send({
+                        message: 'No puede eliminar este tweet'
+                    });
+                }
             });
             break;
 
@@ -687,39 +705,56 @@ function comands(req, res) {
             break;
 
         case "FOLLOW":
-            User.findOne({
-                username: params[1]
-            }, {
-                _id: true
-            }, (err, newFollower) => {
-                if (err)
-                    return res.status(500).send({
-                        message: "Error de petición"
+            //Comparación
+            User.findOne({ username: params[1] }, (err, searchUser) => {
+                if (searchUser.username != req.user.username) {
+                    User.findById(searchUser._id, { 'followers': true }, (err, searchFollow) => {
+                        if (searchFollow.followers == req.user.sub) {
+                            return res.status(200).send({
+                                message: 'Ya sigues a este usuario'
+                            });
+                        } else {
+                            User.findOne({
+                                username: params[1]
+                            }, {
+                                _id: true
+                            }, (err, newFollower) => {
+                                if (err)
+                                    return res.status(500).send({
+                                        message: "Error de petición"
+                                    });
+                                if (!newFollower) {
+                                    return res.status(404).send({
+                                        message: "Error al mostrar datos"
+                                    });
+                                }
+                                User.findByIdAndUpdate(newFollower, {
+                                    $push: {
+                                        followers: req.user.sub
+                                    }
+                                }, {
+                                    new: true
+                                }, (err, addNewFollow) => {
+                                    if (err)
+                                        return res.status(500).send({
+                                            message: "Error de petición"
+                                        });
+                                    if (!addNewFollow)
+                                        return res.status(500).send({
+                                            message: "No se pueden agregar seguidores"
+                                        });
+                                    return res.status(200).send({
+                                        message: addNewFollow
+                                    });
+                                });
+                            });
+                        }
                     });
-                if (!newFollower) {
-                    return res.status(404).send({
-                        message: "Error al mostrar datos"
+                } else {
+                    return res.status(500).send({
+                        message: 'No puedes seguirte a ti mismo'
                     });
                 }
-                User.findByIdAndUpdate(newFollower, {
-                    $push: {
-                        followers: req.user.sub
-                    }
-                }, {
-                    new: true
-                }, (err, addNewFollow) => {
-                    if (err)
-                        return res.status(500).send({
-                            message: "Error de petición"
-                        });
-                    if (!addNewFollow)
-                        return res.status(500).send({
-                            message: "No se pueden agregar seguidores"
-                        });
-                    return res.status(200).send({
-                        message: addNewFollow
-                    });
-                });
             });
             break;
 
