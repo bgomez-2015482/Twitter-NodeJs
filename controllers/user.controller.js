@@ -450,31 +450,37 @@ function comands(req, res) {
             break;
 
         case "REPLY_TWEET":
-            Tweet.findById(params[1], (err, searchTweet) => {
-                if (err)
-                    return res.status(500).send({
-                        message: 'El tweet no existe'
-                    });
-                Tweet.findByIdAndUpdate(params[1], {
-                    $push: {
-                        coment: {
-                            comentId: req.user.sub,
-                            comentContainer: params[2]
-                        }
-                    }
-                }, {
-                    new: true
-                }, (err, searchTweet) => {
+            if (params[1] && params[2]) {
+                Tweet.findById(params[1], (err, searchTweet) => {
                     if (err)
-                        res.status(500).send({
-                            message: 'Error al actualizar'
+                        return res.status(500).send({
+                            message: 'El tweet no existe'
                         });
-                    if (searchTweet)
-                        return res.status(200).send({
-                            message: searchTweet
-                        });
+                    Tweet.findByIdAndUpdate(params[1], {
+                        $push: {
+                            coment: {
+                                comentId: req.user.sub,
+                                comentContainer: params[2]
+                            }
+                        }
+                    }, {
+                        new: true
+                    }, (err, searchTweet) => {
+                        if (err)
+                            res.status(500).send({
+                                message: 'Error al actualizar'
+                            });
+                        if (searchTweet)
+                            return res.status(200).send({
+                                message: searchTweet
+                            });
+                    });
                 });
-            });
+            } else {
+                res.status(500).send({
+                    message: "Debe agregar un comentario",
+                });
+            }
             break;
 
         case "REPLY_TWEET":
@@ -606,7 +612,6 @@ function comands(req, res) {
                         message: "No puede editar este tweet"
                     });
                 }
-
             });
 
             break;
@@ -665,7 +670,7 @@ function comands(req, res) {
             break;
 
         case "VIEW_TWEETS":
-            User.find({
+            User.findOne({
                 username: params[1]
             }, { _id: true }, (err, searchUser) => {
                 if (err)
@@ -674,32 +679,49 @@ function comands(req, res) {
                     });
                 if (!searchUser)
                     return res.status(404).send({
-                        message: "Error al mostrar datos en User"
+                        message: "El usuario no existe"
                     });
                 var search = searchUser;
                 Tweet.find({ creator: search }, (err, showTweet) => {
                     if (err)
                         return res.status(500).send({
-                            message: 'Error de petición es Tweet'
+                            message: 'Error de petición en Tweet'
                         });
-                    if (!showTweet)
+                    if (!showTweet) {
                         return res.status(404).send({
                             message: "Error al mostrar datos en Tweet"
                         });
-                    User.find({ username: params[1] }, { 'retweet': true }, (err, Retweets) => {
-                        if (err)
-                            return res.status(500).send({
-                                message: "Error al buscar usuario"
-                            });
-                        if (!Retweets)
-                            return res.status(500).send({
-                                message: "Error al mostrar usuarios"
-                            });
-                        return res.status(500).send({
-                            'Tweets': showTweet ||
-                                Retweets
+                    } else if (showTweet.length === 0) {
+                        return res.status(404).send({
+                            message: "No hay tweets para mostrar"
                         });
-                    });
+                    } else {
+                        User.find({ username: params[1] }, { 'tweets': true, 'retweet': true }, (err, Retweets) => {
+                            if (err)
+                                return res.status(500).send({
+                                    message: "Error al buscar usuario"
+                                });
+                            if (!Retweets)
+                                return res.status(500).send({
+                                    message: "Error al mostrar usuarios"
+                                });
+                            Tweet.populate(Retweets, {
+                                path: 'tweets'
+                            }, (err, referenceTweet) => {
+                                if (err)
+                                    return res.status(500).send({
+                                        message: 'Error de petición'
+                                    });
+                                if (!Retweets)
+                                    return res.status(404).send({
+                                        message: 'Error al mostrar los tweet'
+                                    });
+                                return res.status(200).send({
+                                    'Tweets': referenceTweet
+                                });
+                            });
+                        });
+                    }
                 });
             });
             break;
@@ -707,6 +729,10 @@ function comands(req, res) {
         case "FOLLOW":
             //Comparación
             User.findOne({ username: params[1] }, (err, searchUser) => {
+                if (!searchUser)
+                    return res.status(404).send({
+                        message: 'El usuario no existe'
+                    });
                 if (searchUser.username != req.user.username) {
                     User.findById(searchUser._id, { 'followers': true }, (err, searchFollow) => {
                         if (searchFollow.followers == req.user.sub) {
@@ -744,7 +770,7 @@ function comands(req, res) {
                                             message: "No se pueden agregar seguidores"
                                         });
                                     return res.status(200).send({
-                                        message: addNewFollow
+                                        'Has seguido al siguiente usuario: ': addNewFollow
                                     });
                                 });
                             });
