@@ -19,8 +19,8 @@
     "homepage": "https://github.com/bgomez-2015482/Twitter-NodeJs#readme",
     "dependencies": {
         "bcrypt-nodejs": "0.0.3",
-        "body-parser": "^1.19.0",
-        "express": "^4.17.1",
+        "body-parser": "^1.20.1",
+        "express": "^4.18.2",
         "jwt-simple": "^0.5.6",
         "moment": "^2.26.0",
         "mongoose": "^5.9.19"
